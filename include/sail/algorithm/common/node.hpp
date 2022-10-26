@@ -10,7 +10,7 @@ template <typename T>
 class Node {
 public:
     Node() = default;
-    Node(T _content): mContent(_content) {}
+    explicit Node(T _content): mContent(_content) {}
     const Node<T>& operator=(const Node<T>& rhs) {
         this->mContent = rhs.content();
         return *this;

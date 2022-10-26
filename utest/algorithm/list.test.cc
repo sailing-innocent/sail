@@ -30,3 +30,47 @@ TEST(SAIL_TEST_LIST, CREATE_LIST)
     EXPECT_EQ(l.content()[0].content(), 1);
 }
 
+TEST(SAIL_TEST_LIST, LIST_APPEND)
+{
+    LinkList<int> li;
+    li.append(1);
+    EXPECT_EQ(li.size(), 1);
+    EXPECT_EQ(li.content()[0].content(), 1);
+    li.append(2);
+    EXPECT_EQ(li.size(), 2);
+    EXPECT_EQ(li.content()[1].content(), 2);
+    EXPECT_EQ(li.content()[0].next().content(), 2);
+}
+
+TEST(SAIL_TEST_LIST, LIST_NODE_FETCH)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(2);
+    ListNode<int>& ln1 = li[0];
+    EXPECT_EQ(ln1.content(), 1);
+    ln1.setContent(2);
+    ListNode<int> ln2 = li[0];
+    EXPECT_EQ(ln2.content(), 2);
+}
+
+TEST(SAIL_TEST_LIST, LIST_INSERT)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(2);
+    li.insert(0, 0);
+    EXPECT_EQ(li.size(), 3);
+    EXPECT_EQ(li.content()[2].content(), 2);
+}
+
+TEST(SAIL_TEST_LIST, LIST_DEL)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(2);
+    li.insert(0, 0);
+    li.del(1);
+    EXPECT_EQ(li.size(), 2);
+    EXPECT_EQ(li.content()[1].content(), 2);
+}

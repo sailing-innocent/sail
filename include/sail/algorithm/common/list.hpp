@@ -19,7 +19,7 @@ class ListNode: public Node<T>
 {
 public:
     ListNode() {}
-    ListNode(T _content): Node(_content) {}
+    explicit ListNode(T _content): Node(_content) {}
     const ListNode<T>& prev() const { return *mpPrev; }
     const ListNode<T>& next() const { return *mpNext; }
     bool setPrev(ListNode<T>& _prev) { mpPrev = &_prev; return true; }
@@ -34,36 +34,19 @@ class LinkList: public Node<std::vector<ListNode<T>>>
 {
 public:
     LinkList() = default;
-    LinkList(std::vector<ListNode<T>>& vec)
+    explicit LinkList(std::vector<ListNode<T>>& vec)
     {
         setContent(vec);
     }
+    inline size_t size() { return mSize; }
     bool setContent(std::vector<ListNode<T>>& vec);
+    bool append(T val);
+    ListNode<T>& operator[](int index){ return mContent[index]; }
+    bool insert(int index, T val);
+    bool del(int index);
+protected:
+    size_t mSize = 0;
 };
-
-template<typename T>
-bool LinkList<T>::setContent(std::vector<ListNode<T>>& vec) {
-    size_t len = vec.size();
-    mContent.resize(len);
-    std::cout << "constructing linklist of size " << len << std::endl;
-    if (len < 2) { 
-        return true; 
-    }
-    for (auto i = 0; i < len; i++) {
-        mContent[i].setContent(vec[i].content());
-    }
-    for (auto i = 0; i < len; i++) {
-        if ( i == 0 ) {
-            mContent[i].setNext(mContent[i+1]);
-        } else if ( i == len-1 ) {
-            mContent[i].setPrev(mContent[i-1]);
-        } else {
-            mContent[i].setNext(mContent[i+1]);
-            mContent[i].setPrev(mContent[i-1]);
-        }
-    }
-    return true;
-}
 
 SAIL_NAMESPACE_END
 

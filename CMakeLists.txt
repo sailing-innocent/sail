@@ -10,9 +10,7 @@ set(LC_TEST_ENABLED FALSE)
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
 list(APPEND LIBSAIL_SRC
-    "sail/hello.cc"
-    # ${ALGORITHM_SRC}
-    # "sail/core/timer.cc"
+    "sail/algorithm/common/list.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE
@@ -86,7 +84,6 @@ if (TEST_ENABLED)
         list(APPEND ALGORITHM_TEST_SOURCE
             "utest/algorithm/node.test.cc"
             "utest/algorithm/list.test.cc"
-            "utest/algorithm/dlist.test.cc"
             # "utest/algorithm/sort.test.cc"
             # "utest/algorithm/select.test.cc"
         )
