@@ -74,3 +74,26 @@ TEST(SAIL_TEST_LIST, LIST_DEL)
     EXPECT_EQ(li.size(), 2);
     EXPECT_EQ(li.content()[1].content(), 2);
 }
+
+TEST(SAIL_TEST_LIST, LIST_SWAP)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(2);
+    li.append(3);
+    li.append(4);
+    li.swap(1,2);
+    EXPECT_EQ(li[3].prev().content(), 2);
+}
+
+TEST(SAIL_TEST_LIST, LIST_SORT)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(3);
+    li.append(2);
+    li.append(4);
+    li.sort();
+    EXPECT_EQ(li[3].content(), 4);
+    EXPECT_EQ(li[3].prev().content(), 3);
+}

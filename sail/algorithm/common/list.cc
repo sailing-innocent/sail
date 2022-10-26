@@ -43,7 +43,7 @@ bool LinkList<T>::append(T val) {
 }
 
 template <typename T>
-bool LinkList<T>::insert(int index, T val) {
+bool LinkList<T>::insert(size_t index, T val) {
     if (mSize == 0 || index >= mSize) {
         return append(val);
     }
@@ -66,7 +66,7 @@ bool LinkList<T>::insert(int index, T val) {
 
 
 template <typename T>
-bool LinkList<T>::del(int index)
+bool LinkList<T>::del(size_t index)
 {
     if (mSize == 0 || mSize <= index || index < 0) {
         return false;
@@ -82,6 +82,16 @@ bool LinkList<T>::del(int index)
     }
     mContent.erase(mContent.begin()+index-1);
     mSize--;
+    return true;
+}
+
+template <typename T>
+bool LinkList<T>::swap(size_t i, size_t j)
+{
+    const T datai = mContent[i].content();
+    const T dataj = mContent[j].content();
+    mContent[i].setContent(dataj);
+    mContent[j].setContent(datai);
     return true;
 }
 
