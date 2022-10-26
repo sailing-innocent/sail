@@ -19,7 +19,17 @@ public:
     DListNode(double _content): ListNode<double>(_content) {} 
 };
 
-class DLinkList: public LinkList<double> {};
+class DLinkList: public LinkList<double> {
+public:
+    DLinkList() = default;
+    DLinkList(std::vector<DListNode>& _dvec) {
+        std::vector<ListNode<double>> _vec;
+        for (auto dnode : _dvec ) {
+            _vec.push_back(ListNode<double>(dnode.content()));
+        }
+        LinkList<double>::setContent(_vec);
+    }
+};
 
 SAIL_NAMESPACE_END
 
