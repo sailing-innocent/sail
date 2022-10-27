@@ -86,7 +86,7 @@ TEST(SAIL_TEST_LIST, LIST_SWAP)
     EXPECT_EQ(li[3].prev().content(), 2);
 }
 
-TEST(SAIL_TEST_LIST, LIST_SORT)
+TEST(SAIL_TEST_LIST, LIST_BUBBLE_SORT)
 {
     LinkList<int> li;
     li.append(1);
@@ -94,6 +94,18 @@ TEST(SAIL_TEST_LIST, LIST_SORT)
     li.append(2);
     li.append(4);
     li.sort();
+    EXPECT_EQ(li[3].content(), 4);
+    EXPECT_EQ(li[3].prev().content(), 3);
+}
+
+TEST(SAIL_TEST_LIST, LIST_SELECT_SORT)
+{
+    LinkList<int> li;
+    li.append(1);
+    li.append(3);
+    li.append(2);
+    li.append(4);
+    li.sort(1);
     EXPECT_EQ(li[3].content(), 4);
     EXPECT_EQ(li[3].prev().content(), 3);
 }

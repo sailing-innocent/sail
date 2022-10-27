@@ -18,7 +18,6 @@ LinkList<T>& bubble_sort_ll(LinkList<T>& lst) {
         }
     }
     return lst;
-
 }
 
 SAIL_NAMESPACE_END

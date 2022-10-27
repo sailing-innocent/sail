@@ -49,6 +49,8 @@ public:
         switch(type) {
             case 0:
                 return bubble_sort_ll(*this);
+            case 1:
+                return select_sort_ll(*this);
             default:
                 return bubble_sort_ll(*this);
         }

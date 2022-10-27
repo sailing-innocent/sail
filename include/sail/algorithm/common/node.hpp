@@ -21,6 +21,11 @@ protected:
     T mContent;
 };
 
+template <typename T>
+bool operator==(const Node<T>& lhs, const Node<T>& rhs) {
+    return lhs.content() == rhs.content();
+}
+
 SAIL_NAMESPACE_END
 
 #endif
