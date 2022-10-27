@@ -7,8 +7,8 @@
  * DONE: //TODO: Finish SALI linked list library
 */
 
-#ifndef SAIL_ALGORITHM_LIST_T_
-#define SAIL_ALGORITHM_LIST_T_
+#ifndef SAIL_ALGORITHM_LIST_H_
+#define SAIL_ALGORITHM_LIST_H_
 
 #include <sail/algorithm.h>
 
@@ -59,6 +59,9 @@ protected:
     size_t mSize = 0;
 };
 
+// ---------------------IMPLEMENTATIONS-------------------------//
+#include <sail/algorithm/list/linklist.tpp>
+
 SAIL_NAMESPACE_END
 
-#endif // SAIL_ALGORITHM_LIST_T_
+#endif // SAIL_ALGORITHM_LIST_H_

@@ -10,7 +10,7 @@ set(LC_TEST_ENABLED FALSE)
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
 list(APPEND LIBSAIL_SRC
-    "sail/algorithm/common/list.cc"
+    "sail/algorithm.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE
