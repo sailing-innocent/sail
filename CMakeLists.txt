@@ -3,8 +3,9 @@ project(libsail)
 
 set(TEST_ENABLED TRUE)
 set(BASIC_TEST_ENABLED FALSE)
+set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
-set(ALGORITHM_TEST_ENABLED TRUE)
+set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
 # ALGORITHM
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
@@ -78,6 +79,18 @@ if (TEST_ENABLED)
         target_include_directories(basic_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
         target_link_libraries(basic_test ${LIBSAIL_TEST_LIBS})
         gtest_discover_tests(basic_test)
+    endif()
+
+    if (${MATH_TEST_ENABLED})
+        list(APPEND MATH_TEST_SOURCE
+            # "utest/math/vec4.test.cc"
+            # "utest/visualize/vnode.test.cc"
+            "utest/math/geometry.test.cc"
+        )
+        add_executable(math_test ${MATH_TEST_SOURCE})
+        target_include_directories(math_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
+        target_link_libraries(math_test ${LIBSAIL_TEST_LIBS})
+        gtest_discover_tests(math_test)
     endif()
 
     if (${ALGORITHM_TEST_ENABLED})

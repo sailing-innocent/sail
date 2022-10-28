@@ -2,11 +2,25 @@
 #ifndef SAIL_ALGORITHM
 #define SAIL_ALGORITHM
 
-#include <vector>
-#include "common.h"
+/**
+ * @file: include/sail/algorithm
+ * @author: sailing-innocent
+ * @create: 2022-10-21
+ * @desp: The Header and Center file for sail algorithm
+*/
+
+#include "sail/common.h"
+
 SAIL_NAMESPACE_BEGIN
 
 #define SAIL_ARRAY_MAX 256
+
+class Object: public Base {};
+
+class Comparable: public Object {
+public:
+    virtual bool operator<(const Comparable & rhs) const = delete;
+};
 
 SAIL_NAMESPACE_END
 

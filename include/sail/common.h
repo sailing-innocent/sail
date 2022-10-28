@@ -6,24 +6,14 @@
 #define SAIL_NAMESPACE_END }
 
 #include <iostream>
+#include <vector>
 
 SAIL_NAMESPACE_BEGIN
 
-class ObjectBase {
+class Base {
 public:
-    ObjectBase() = default;
-    virtual ~ObjectBase() {}
-    ObjectBase& operator=() = delete;
-    ObjectBase(const ObjectBase&) = delete;
-    ObjectBase(ObjectBase&&) = delete;
-    ObjectBase& operator=(ObjectBase&&) = delete;
-};
-
-class Object: public ObjectBase {};
-
-class Comparable: public Object {
-public:
-    virtual bool operator<(const Comparable & rhs) const = delete;
+    Base() = default;
+    virtual ~Base() {}
 };
 
 SAIL_NAMESPACE_END
