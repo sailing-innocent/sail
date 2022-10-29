@@ -14,6 +14,8 @@ aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 list(APPEND LIBSAIL_SRC
     "sail/algorithm.cc"
     "sail/visualize/visnode.cc"
+    "sail/math/geometry_primitive.cc"
+    "sail/math/vec4.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE
@@ -94,7 +96,7 @@ if (TEST_ENABLED)
 
     if (${MATH_TEST_ENABLED})
         list(APPEND MATH_TEST_SOURCE
-            # "utest/math/vec4.test.cc"
+            "utest/math/vec4.test.cc"
             # "utest/visualize/vnode.test.cc"
             "utest/math/geometry.test.cc"
         )

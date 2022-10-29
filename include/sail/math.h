@@ -17,6 +17,7 @@
 #include <iostream>
 #include <Eigen/Core>
 #include <Eigen/Dense>
+#include <math.h>
 
 SAIL_NAMESPACE_BEGIN
 

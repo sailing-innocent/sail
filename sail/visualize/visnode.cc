@@ -26,6 +26,8 @@ void VisNode::genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndi
         }
         shift += static_cast<uint16_t>(vf.size() / 8);
     }
+
+    // TODO: mesh refinement
 }
 
 SAIL_NAMESPACE_END

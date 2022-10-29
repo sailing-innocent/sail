@@ -47,14 +47,6 @@ public:
 protected:
 };
 
-class VQuatrangle: public VMesh {};
-class VCube: public VMesh {};
-class VCircle: public VMesh {};
-class VSphere: public VMesh {};
-class VPoint: public VMesh {};
-class VLine: public VMesh {};
-
-class VRectangle: public VQuatrangle{};
 
 
 SAIL_NAMESPACE_END
