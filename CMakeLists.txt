@@ -3,6 +3,7 @@ project(libsail)
 
 set(TEST_ENABLED TRUE)
 set(BASIC_TEST_ENABLED FALSE)
+set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
@@ -12,10 +13,13 @@ aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
 list(APPEND LIBSAIL_SRC
     "sail/algorithm.cc"
+    "sail/visualize/visnode.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE
     "include"
+    "E:/includes"
+    "E:/libs/eigen/"
 )
 
 list(APPEND LIBSAIL_DEP_LIBS
@@ -50,9 +54,6 @@ if (TEST_ENABLED)
 
     list(APPEND LIBSAIL_TEST_INCLUDE
         ${LIBSAIL_INCLUDE}
-        "E:/includes"
-        # EIGEN
-        "E:/libs/eigen/"
     )
 
     list(APPEND LIBSAIL_TEST_LIBS
@@ -79,6 +80,16 @@ if (TEST_ENABLED)
         target_include_directories(basic_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
         target_link_libraries(basic_test ${LIBSAIL_TEST_LIBS})
         gtest_discover_tests(basic_test)
+    endif()
+
+    if (${VIS_TEST_ENABLED})
+        list(APPEND VIS_TEST_SOURCE
+            "utest/visualize/vnode.test.cc"
+        )
+        add_executable(vis_test ${VIS_TEST_SOURCE})
+        target_include_directories(vis_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
+        target_link_libraries(vis_test ${LIBSAIL_TEST_LIBS})
+        gtest_discover_tests(vis_test)
     endif()
 
     if (${MATH_TEST_ENABLED})

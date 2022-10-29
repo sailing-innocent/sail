@@ -9,7 +9,7 @@ TEST(SAIL_TEST_GEOMETRY, TRIAGNLE_TEST)
     point p2(-0.5, 0.0, 0.0, 1.0);
     point p3(0.0, 0.5, 0.0, 1.0);
     Triangle tri(p1, p2, p3);
-    VTriangle vtri;
+    VisNode vtri;
     tri.visualize(vtri);
     std::vector<float> vf;
     std::vector<uint16_t> iu;

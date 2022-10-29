@@ -19,14 +19,14 @@ public:
     virtual ~vec4f() {}
     const float operator[](const size_t index) const { return mData[index]; }
     float& operator[](const size_t index) { return mData[index]; }
+    void out(std::vector<float>& outv) const {
+        for (auto i = 0; i < 4; i++) {
+            outv.push_back(mData[i]);
+        }
+    }
 protected:
     std::array<float,4> mData;
 };
-
-std::ostream& operator<<(std::ostream& os, const vec4f& v) { 
-    os << "[" << v[0] << "," << v[1] << "," << v[2] << "," << v[3] << "]";
-    return os;
-}
 
 typedef vec4f point;
 typedef vec4f color;

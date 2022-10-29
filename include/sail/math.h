@@ -18,13 +18,12 @@
 #include <Eigen/Core>
 #include <Eigen/Dense>
 
-
-
 SAIL_NAMESPACE_BEGIN
 
 #define MAX_ARRAY_BUFSZ 10000
 
 SAIL_NAMESPACE_END
+
 #include <sail/math/vec4.hpp>
 
 

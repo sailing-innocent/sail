@@ -10,87 +10,54 @@
 */
 
 #include <sail/common.h>
-#include <sail/math/vec4.hpp>
+#include <sail/math.h>
 
 SAIL_NAMESPACE_BEGIN
 
 class VisNode: public Base {
 public:
-    VisNode() = default;
-    virtual ~VisNode() {}
-    virtual void genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices);
-    const size_t subNodeCount() const { return mSubNodeCount; }
+    VisNode() {
+        std::cout << "Constructing VisNode" << std::endl;
 
+    };
+    VisNode(const VisNode& node) {
+        std::cout << "Constructing VisNode with " << node.subNodeCount() << " subnodes" << std::endl;
+        mSubNodeCount = node.subNodeCount();
+        std::vector<float> _data = node.data();
+        for (auto i = 0; i < _data.size(); i++) {
+            mData.push_back(_data[i]);
+        }
+        for (auto i = 0; i < node.subNodeCount(); i++) {
+            mSubNodes.push_back(node[i]);
+        }
+    }
+    virtual ~VisNode() {
+        std::cout << "Destructing VisNode with "<< mSubNodeCount << " subnodes." << std::endl;
+        for (auto i = 0; i < mSubNodeCount; i++) {
+            // delete mSubNodes[i];
+        }
+    }
+    virtual const VisNode operator[](size_t index) const { return mSubNodes[index]; }
+    virtual VisNode& operator[](size_t index) { return mSubNodes[index]; }
+
+    virtual void genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, uint16_t start = 0);
+    const size_t subNodeCount() const { return mSubNodeCount; }
+    virtual bool append(VisNode& node) {
+        std::cout << "is appending node with " << node.subNodeCount() << " subnodes" << std::endl;
+        mSubNodes.push_back(node);
+        mSubNodeCount++;
+        return true;
+    }
+    virtual std::vector<float>& data() { return mData; }
+    virtual const std::vector<float> data() const { return mData; }
 protected:
     size_t mSubNodeCount = 0;
-    std::vector<VisNode*> mpSubNodes;
-};
-
-void VisNode::genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices)
-{
-    for (auto i = 0; i < mSubNodeCount; i++) {
-        std::vector<float> vf;
-        std::vector<uint16_t> iu;
-        mpSubNodes[i]->genING(vf, iu);
-        for (auto j = 0; j < vf.size(); j++) {
-            fVertices.push_back(vf[j]);
-        }
-        for (auto j = 0; j < iu.size(); j++) {
-            uIndices.push_back(iu[j]);
-        }
-    }
-}
-
-class VTriangle : public VisNode {
-public:
-    VTriangle() = default;
-    VTriangle(point& _p1, point& _p2, point& _p3): mP1(_p1), mP2(_p2), mP3(_p3) {}
-    ~VTriangle() {}
-    bool setP1(point& p) { mP1 = p; return true;}
-    bool setP2(point& p) { mP2 = p; return true;}
-    bool setP3(point& p) { mP3 = p; return true;}
-    void genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices)
-    {
-        fVertices.push_back(mP1[0]);
-        fVertices.push_back(mP1[1]);
-        fVertices.push_back(mP1[2]);
-        fVertices.push_back(1.0f);
-        fVertices.push_back(mC1[0]);
-        fVertices.push_back(mC1[1]);
-        fVertices.push_back(mC1[2]);
-        fVertices.push_back(mC1[3]);
-
-        fVertices.push_back(mP2[0]);
-        fVertices.push_back(mP2[1]);
-        fVertices.push_back(mP2[2]);
-        fVertices.push_back(1.0f);
-        fVertices.push_back(mC2[0]);
-        fVertices.push_back(mC2[1]);
-        fVertices.push_back(mC2[2]);
-        fVertices.push_back(mC2[3]);
-
-        fVertices.push_back(mP3[0]);
-        fVertices.push_back(mP3[1]);
-        fVertices.push_back(mP3[2]);
-        fVertices.push_back(1.0f);
-        fVertices.push_back(mC3[0]);
-        fVertices.push_back(mC3[1]);
-        fVertices.push_back(mC3[2]);
-        fVertices.push_back(mC3[3]);
-
-        uIndices.push_back(0);
-        uIndices.push_back(1);
-        uIndices.push_back(2);
-    }
-protected:
-    point mP1;
-    point mP2;
-    point mP3;
-    color mC1 = {1.0f, 0.0f, 0.0f, 1.0f}; 
-    color mC2 = {0.0f, 1.0f, 0.0f, 1.0f}; 
-    color mC3 = {0.0f, 0.0f, 1.0f, 1.0f};
+    std::vector<VisNode> mSubNodes;
+    std::vector<float> mData;
 };
 
 SAIL_NAMESPACE_END
+
+#include <sail/visualize/vprimitive.hpp>
 
 #endif // SAIL_VISUALIZE_H_

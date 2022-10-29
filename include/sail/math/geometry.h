@@ -17,14 +17,57 @@ SAIL_NAMESPACE_BEGIN
 class GeoNode: public Base {
 public:
     GeoNode() = default;
-    virtual ~GeoNode() {}
+    GeoNode(const GeoNode& rhs) {
+        mSubGeoCount = rhs.subsCount();
+        mpSubGeos = rhs.subs();
+    }
+    GeoNode(std::vector<GeoNode*>& geos) {
+        mSubGeoCount = geos.size();
+        mpSubGeos = geos;
+    }
+    virtual ~GeoNode() {
+        for (auto i = 0; i < mSubGeoCount; i++) {
+            delete mpSubGeos[i];
+        }
+        mSubGeoCount = 0;
+    }
+    virtual GeoNode& operator=(const GeoNode& rhs) {
+        mSubGeoCount = rhs.subsCount();
+        mpSubGeos = rhs.subs();
+        return *this;
+    }
     virtual bool visualize(VisNode& root) {
-        // TODO: NOT CLEAR
+        
+        for (auto i = 0; i < mSubGeoCount; i++) {
+            VisNode* pnewNode = new VisNode(); 
+            mpSubGeos[i]->visualize(*pnewNode);
+            root.append(*pnewNode);
+        }
         return true;
     }
+    size_t& subsCount() { return mSubGeoCount; }
+    std::vector<GeoNode*>& subs() { return mpSubGeos; }
+    const size_t subsCount() const { return mSubGeoCount; }
+    const std::vector<GeoNode*> subs() const { return mpSubGeos; }
 protected:
     size_t mSubGeoCount = 0;
     std::vector<GeoNode*> mpSubGeos;
+};
+
+/**
+ * @class: Primitive
+ * @desp: The Primitive class (and its derived class) has a 
+ * float determine(point&)
+ * method, which can determine a point is inside a primitive or not
+*/
+
+class Primitive: public GeoNode {
+public:
+    Primitive() = default;
+    ~Primitive() {}
+    virtual float determine() = 0;
+protected:
+    std::vector<float> mParams;
 };
 
 class Triangle: public GeoNode {
@@ -33,15 +76,14 @@ public:
     ~Triangle() {}
     point& operator[](const size_t index) { return mPoints[index]; }
     const point operator[](const size_t index) const { return mPoints[index]; }
-    bool visualize(VTriangle& vtr);
+    bool visualize(VisNode& root);
 protected: 
     std::array<point, 3> mPoints;
 };
 
-bool Triangle::visualize(VTriangle& vtr) {
-    vtr.setP1(mPoints[0]);
-    vtr.setP2(mPoints[1]);
-    vtr.setP3(mPoints[2]);
+bool Triangle::visualize(VisNode& root) {
+    VTriangle vtr(mPoints[0],mPoints[1],mPoints[2]);
+    root.append(vtr);
     return true;
 }
 
