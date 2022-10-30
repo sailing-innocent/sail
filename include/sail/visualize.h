@@ -56,6 +56,9 @@ protected:
     std::vector<float> mData;
 };
 
+
+void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices);
+
 SAIL_NAMESPACE_END
 
 #include <sail/visualize/vprimitive.hpp>

@@ -3,8 +3,8 @@ project(libsail)
 
 set(TEST_ENABLED TRUE)
 set(BASIC_TEST_ENABLED FALSE)
-set(VIS_TEST_ENABLED FALSE)
-set(MATH_TEST_ENABLED TRUE)
+set(VIS_TEST_ENABLED TRUE)
+set(MATH_TEST_ENABLED FALSE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
@@ -75,8 +75,8 @@ if (TEST_ENABLED)
             # "utest/hello_test.cc"
             # "utest/core/timer.test.cc"
             # "utest/core/cpp_basic.test.cc"
-            "utest/core/cpp_macro.test.cc"
-            # "utest/core/stl_vector.test.cc"
+            # "utest/core/cpp_macro.test.cc"
+            "utest/core/stl_vector.test.cc"
         )
         add_executable(basic_test ${BASIC_TEST_SOURCE})
         target_include_directories(basic_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
