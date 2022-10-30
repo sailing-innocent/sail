@@ -3,11 +3,12 @@ project(libsail)
 
 set(TEST_ENABLED TRUE)
 set(BASIC_TEST_ENABLED FALSE)
-set(VIS_TEST_ENABLED TRUE)
+set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED FALSE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
+set(UI_TEST_ENABLED TRUE)
 # ALGORITHM
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
@@ -16,6 +17,7 @@ list(APPEND LIBSAIL_SRC
     "sail/visualize/visnode.cc"
     "sail/math/geometry_primitive.cc"
     "sail/math/vec4.cc"
+    "sail/ui/figure.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE
@@ -92,6 +94,16 @@ if (TEST_ENABLED)
         target_include_directories(vis_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
         target_link_libraries(vis_test ${LIBSAIL_TEST_LIBS})
         gtest_discover_tests(vis_test)
+    endif()
+
+    if (${UI_TEST_ENABLED})
+        list(APPEND UI_TEST_SOURCE
+            "utest/ui/histogram.test.cc"
+        )
+        add_executable(ui_test ${UI_TEST_SOURCE})
+        target_include_directories(ui_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
+        target_link_libraries(ui_test ${LIBSAIL_TEST_LIBS})
+        gtest_discover_tests(ui_test)
     endif()
 
     if (${MATH_TEST_ENABLED})

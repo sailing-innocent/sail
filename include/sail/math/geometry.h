@@ -86,7 +86,11 @@ protected:
 class Rect2D: public Primitive {
 public:
     Rect2D() = default;
-    Rect2D(point& lb = point(), float width = 0.2f, float height=0.1f) {
+    Rect2D(
+        point& lb = point(), 
+        float width = 0.2f,
+        float height=0.1f
+    ) {
         point lt(lb[0], lb[1] + height);
         point rb(lb[0]+width, lb[1]);
         point rt(lb[0]+width, lb[1]+height); 

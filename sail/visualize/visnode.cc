@@ -18,17 +18,20 @@ void VisNode::genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndi
         std::vector<float> vf;
         std::vector<uint16_t> iu;
         mSubNodes[i].genING(vf, iu, start+shift);
+
         for (auto j = 0; j < vf.size(); j++) {
             fVertices.push_back(vf[j]);
         }
         for (auto j = 0; j < iu.size(); j++) {
             uIndices.push_back(iu[j]);
         }
+
         shift += static_cast<uint16_t>(vf.size() / 8);
+
     }
     std::cout << "Current verts: " << fVertices.size() << std::endl;
 
-    VisRefine(fVertices, uIndices);
+    VisRefine(fVertices, uIndices, start);
 }
 
 void indexCover(std::vector<uint16_t>& uIndicies, uint16_t _i, uint16_t _j)
@@ -41,7 +44,7 @@ void indexCover(std::vector<uint16_t>& uIndicies, uint16_t _i, uint16_t _j)
     }
 }
 
-void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices)
+void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, uint16_t start)
 {
     const size_t stride = 8;
     const size_t shift = 3;
@@ -62,8 +65,8 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices)
     
             std::cout << "::IS COMPARING " << i << " and " << j << " with result: "<< flag <<std::endl;
             if (flag) {
-                indexCover(uIndices, i, j);
-                indexCover(uIndices, j, validItems-1);
+                indexCover(uIndices, start+i, start+j);
+                indexCover(uIndices, start+j, start+validItems-1);
                 size_t swapI = j;
                 size_t swapJ = validItems-1;
                 float temp;

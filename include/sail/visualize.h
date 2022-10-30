@@ -57,7 +57,7 @@ protected:
 };
 
 
-void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices);
+void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, uint16_t start);
 
 SAIL_NAMESPACE_END
 
