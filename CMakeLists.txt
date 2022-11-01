@@ -1,14 +1,15 @@
 cmake_minimum_required(VERSION 3.14)
 project(libsail)
 
-set(TEST_ENABLED TRUE)
+set(TEST_ENABLED FALSE)
 set(BASIC_TEST_ENABLED FALSE)
 set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED FALSE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
-set(UI_TEST_ENABLED TRUE)
+set(UI_TEST_ENABLED FALSE)
+set(BINDING_ENABLED TRUE)
 # ALGORITHM
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
@@ -24,13 +25,15 @@ list(APPEND LIBSAIL_INCLUDE
     "include"
     "E:/includes"
     "E:/libs/eigen/"
+
 )
 
 list(APPEND LIBSAIL_DEP_LIBS
-    #fmtd
+    # "python3"
 )
 list(APPEND LIBSAIL_DEP_DIRS
     "E:/libs/fmt"
+    # "E:/env/miniconda/libs"
 )
 
 add_library(libsail ${LIBSAIL_SRC})
@@ -134,7 +137,7 @@ if (TEST_ENABLED)
     if (${DEPS_TEST_ENABLED})
         list(APPEND DEPS_TEST_SOURCE
             # "utest/dependencies/eigen_basic.test.cc" 
-            "utest/dependencies/fmt.test.cc"
+            # "utest/dependencies/fmt.test.cc"
         )
         add_executable(deps_test ${DEPS_TEST_SOURCE})
         target_include_directories(deps_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
@@ -152,7 +155,14 @@ if (TEST_ENABLED)
         target_link_libraries(lc_test PRIVATE ${LIBSAIL_TEST_LIBS})
         gtest_discover_tests(lc_test)
     endif()
-    
 
 endif()
 
+
+if (${BINDING_ENABLED}) 
+    add_subdirectory("E:/source/pybind11" pybind11)
+    list(APPEND BINDING_SOURCE
+        "py/hello.cc"
+    )
+    pybind11_add_module(addpy ${BINDING_SOURCE})
+endif()
