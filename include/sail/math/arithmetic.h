@@ -9,6 +9,8 @@
 #ifndef SAIL_MATH_ARITHMETIC_H_
 #define SAIL_MATH_ARITHMETIC_H_
 
+#include <sail/math/arithmetic/mat.hpp>
+#include <sail/math/arithmetic/vec.hpp>
 #include <sail/math/arithmetic/vec4f.hpp>
 
 

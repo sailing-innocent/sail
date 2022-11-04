@@ -113,10 +113,11 @@ if (TEST_ENABLED)
 
     if (${MATH_TEST_ENABLED})
         list(APPEND MATH_TEST_SOURCE
-            "utest/math/vec4f.test.cc"
+            # "utest/math/vec4f.test.cc"
             # "utest/visualize/vnode.test.cc"
             # "utest/math/geometry.test.cc"
-            "utest/math/matrix.test.cc"
+            # "utest/math/matrix.test.cc"
+            "utest/math/statistic.test.cc"
         )
         add_executable(math_test ${MATH_TEST_SOURCE})
         target_include_directories(math_test PUBLIC ${LIBSAIL_TEST_INCLUDE})

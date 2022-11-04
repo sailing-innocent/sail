@@ -17,6 +17,7 @@
 
 SAIL_NAMESPACE_BEGIN
 
+using MatrixXd = Eigen::MatrixXd;
 
 template<typename DType_, int Rows_, int Cols_>
 class Matrix

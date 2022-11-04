@@ -13,6 +13,8 @@
 
 SAIL_NAMESPACE_BEGIN
 
+using VectorXd = Eigen::VectorXd;
+
 template<typename DType_, int Size_>
 class Vector 
 {

@@ -25,9 +25,6 @@ public:
     }
     vec4f(const vec4f& rhs): Vector<float,4>(rhs) {}
     vec4f(const Vector<float,4>& rhs): Vector<float,4>(rhs) {}
-    const vec4f& operator=(const vec4f& rhs) {
-        mData = rhs.data();
-    }
     ~vec4f() {}
 };
 

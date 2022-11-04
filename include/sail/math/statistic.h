@@ -14,23 +14,10 @@
 
 SAIL_NAMESPACE_BEGIN
 
-class ParamEvalMethod: public Base {
-    
-};
-
-class ParamEvalMethodFactory: public Base {
-
-};
-
 class StatData: public Base {
 public:
     StatData() = default;
     ~StatData() {}
-public:
-    input()
-    setInput()
-    output()
-    setOutput()
 };
 
 
@@ -40,29 +27,46 @@ public:
     ~StatModel() {}
 };
 
-
 /**
  * @class LinearModel
  * [output] = [params][input]
 */
 class LinearModel: public StatModel {
 public:
-    LinearModel();
-    ~LinearModel();
-    bool setInputSize(size_t _inputDim);
-    bool setInput(std::vector<double>& _input, size_t _inputDim);
-    bool setOutputSize(size_t _outputDim);
-    bool setOutput(std::vector<double>& _output, size_t _outputDim);
-    bool setParams(std::vector<double>& _params, size_t _paramDim); // can use to set or initialize params
-    std::vector<double>& computeOutput(); // compute the output with params and input given
-    bool evaluateParams(size_t numData, std::vector<std::vector<double>>& _inputs, size_t _inputDim, std::vector<std::vector<double>>& _outputs, size_t _outputDim); // evaluate the params with a list of sample input and output
-    bool updateParam(std::vector<double>& _input, size_t _inputDim, std::vector<double>& _output, size_t _outputDim); // update params with given new data
+    LinearModel(size_t _inputDim = 1, size_t _outputDim = 1):
+        mInputDim(_inputDim),
+        mInput(VectorXd(_inputDim)),
+        mOutputDim(_outputDim),
+        mOutput(VectorXd(_outputDim)),
+        mParam(MatrixXd(_inputDim, _outputDim))
+    {}
+    ~LinearModel() {}
+    size_t& inputDim() { return mInputDim; }
+    VectorXd& input() { return mInput; }
+    bool setInputDim(size_t _inputDim) { mInputDim = _inputDim; return true; }
+    bool setInput(std::vector<double>& _input, size_t _inputDim) {
+        setInputDim(_inputDim);
+        for (auto i = 0; i < _inputDim; i++) {
+            mInput(i) = _input[i];
+        }
+        return true;
+    }
+    const size_t outputDim() const { return mOutputDim; }
+    const VectorXd& output() const { return mOutput; }
+    bool setOutputDim(size_t _outputDim) { mOutputDim = _outputDim; return true; }
+    bool setOutput(std::vector<double>& _output, size_t _outputDim) {
+        setOutputDim(_outputDim);
+        for (auto i = 0; i < _outputDim; i++) {
+            mOutput(i) = _output[i];
+        }
+        return true;
+    }
 protected:
-    size_t mInputSize = 1;
-    std::vector<double> mInput; // the input list
-    size_t mOutputSize = 1;
-    std::vector<output> mOutput;
-    std::vector<double> mParams;
+    size_t mInputDim = 1;
+    VectorXd mInput;
+    size_t mOutputDim = 1;
+    VectorXd mOutput;
+    MatrixXd mParam;
 };
 
 class StatModelFactory: public Base {
@@ -70,7 +74,7 @@ public:
     StatModelFactory() = default;
     ~StatModelFactory() {}
     StatModel createModel(std::string& name) {
-        switch (mSupportedModel(name)) {
+        switch (mSupportedModel.at(name)) {
             case 1:
                 return LinearModel();
             default:
@@ -78,7 +82,9 @@ public:
         }
     }
 protected:
-    const std::map<std::string, int> mSupportedModel;
+    const std::map<std::string, int> mSupportedModel = {
+        {"linear", 1}
+    };
 };
 
 SAIL_NAMESPACE_END
