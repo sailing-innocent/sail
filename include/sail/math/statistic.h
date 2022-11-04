@@ -22,11 +22,25 @@ class ParamEvalMethodFactory: public Base {
 
 };
 
+class StatData: public Base {
+public:
+    StatData() = default;
+    ~StatData() {}
+public:
+    input()
+    setInput()
+    output()
+    setOutput()
+};
+
+
 class StatModel: public Base {
 public:
     StatModel() = default;
     ~StatModel() {}
 };
+
+
 /**
  * @class LinearModel
  * [output] = [params][input]

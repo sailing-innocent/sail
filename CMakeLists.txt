@@ -1,15 +1,18 @@
 cmake_minimum_required(VERSION 3.14)
 project(libsail)
 
-set(TEST_ENABLED FALSE)
-set(BASIC_TEST_ENABLED FALSE)
+set(CMAKE_C_STANDARD 14)
+set(CMAKE_C_STANDARD_REQUIRED TRUE)
+
+set(TEST_ENABLED TRUE)
+set(BASIC_TEST_ENABLED TRUE)
 set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED FALSE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
 set(UI_TEST_ENABLED FALSE)
-set(BINDING_ENABLED TRUE)
+set(BINDING_ENABLED FALSE)
 # ALGORITHM
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
 
@@ -78,10 +81,10 @@ if (TEST_ENABLED)
     if (${BASIC_TEST_ENABLED})
         list(APPEND BASIC_TEST_SOURCE
             # "utest/hello_test.cc"
-            # "utest/core/timer.test.cc"
+            "utest/core/timer.test.cc"
             # "utest/core/cpp_basic.test.cc"
             # "utest/core/cpp_macro.test.cc"
-            "utest/core/stl_vector.test.cc"
+            # "utest/core/stl_vector.test.cc"
         )
         add_executable(basic_test ${BASIC_TEST_SOURCE})
         target_include_directories(basic_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
