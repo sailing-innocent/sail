@@ -51,7 +51,6 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, u
     const size_t nItems = fVertices.size() / stride;
     std::cout << "IS REFINING MESH with: " << nItems << " Vertices" << std::endl;
     size_t validItems = nItems;
-    // clear the duplicate
     for (auto i = 0; i < validItems-1; i++) {
         size_t j = i+1;
 
@@ -64,6 +63,7 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, u
             }
     
             std::cout << "::IS COMPARING " << i << " and " << j << " with result: "<< flag <<std::endl;
+        
             if (flag) {
                 indexCover(uIndices, start+i, start+j);
                 indexCover(uIndices, start+j, start+validItems-1);

@@ -5,9 +5,9 @@ set(CMAKE_C_STANDARD 14)
 set(CMAKE_C_STANDARD_REQUIRED TRUE)
 
 set(TEST_ENABLED TRUE)
-set(BASIC_TEST_ENABLED TRUE)
+set(BASIC_TEST_ENABLED FALSE)
 set(VIS_TEST_ENABLED FALSE)
-set(MATH_TEST_ENABLED FALSE)
+set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
@@ -20,7 +20,6 @@ list(APPEND LIBSAIL_SRC
     "sail/algorithm.cc"
     "sail/visualize/visnode.cc"
     "sail/math/geometry_primitive.cc"
-    "sail/math/vec4.cc"
     "sail/ui/figure.cc"
 )
 
@@ -114,9 +113,10 @@ if (TEST_ENABLED)
 
     if (${MATH_TEST_ENABLED})
         list(APPEND MATH_TEST_SOURCE
-            "utest/math/vec4.test.cc"
+            "utest/math/vec4f.test.cc"
             # "utest/visualize/vnode.test.cc"
-            "utest/math/geometry.test.cc"
+            # "utest/math/geometry.test.cc"
+            "utest/math/matrix.test.cc"
         )
         add_executable(math_test ${MATH_TEST_SOURCE})
         target_include_directories(math_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
@@ -141,6 +141,7 @@ if (TEST_ENABLED)
         list(APPEND DEPS_TEST_SOURCE
             # "utest/dependencies/eigen_basic.test.cc" 
             # "utest/dependencies/fmt.test.cc"
+            "utest/dependencies/numcpp.test.cc"
         )
         add_executable(deps_test ${DEPS_TEST_SOURCE})
         target_include_directories(deps_test PUBLIC ${LIBSAIL_TEST_INCLUDE})

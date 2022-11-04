@@ -25,7 +25,7 @@ SAIL_NAMESPACE_BEGIN
 
 SAIL_NAMESPACE_END
 
-#include <sail/math/vec4.hpp>
+#include <sail/math/arithmetic.h>
 
 
 #endif // SAIL_MATH_H

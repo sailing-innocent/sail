@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include <sail/math.h>
+#include <sail/math/arithmetic/vec4f.hpp>
 
 using namespace sail;
 
@@ -23,7 +23,9 @@ TEST(SAIL_TEST_MATH_VEC4, VEC4F_ARITH)
 {
     vec4f v1;
     vec4f v2(1.0f, 0.0f, 0.0f, 0.0f);
+
     vec4f v3 = 2.0 * v2;
+    
     EXPECT_EQ(v3[0], 2.0f);
     vec4f v4(1.0f, 3.0f, 2.0f, 1.0f);
     vec4f v5(2.0f, 2.0f, 0.0f, 1.0f);
