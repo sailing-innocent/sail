@@ -9,8 +9,9 @@
  * @desp: The SAIL MATH GEOMETRY LIB Header
 */
 
-#include <sail/math.h>
+#include <sail/math/arithmetic.h>
 #include <sail/visualize.h>
+#include <sail/utils/math.hpp>
 
 SAIL_NAMESPACE_BEGIN
 

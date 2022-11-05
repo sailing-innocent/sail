@@ -20,7 +20,7 @@ class VTriangle : public VisNode {
 public:
     VTriangle() = default;
     VTriangle(point& _p1, point& _p2, point& _p3){
-        std::cout << "Constucting Triangle ..." << std::endl;
+        // std::cout << "Constucting Triangle ..." << std::endl;
         // generate colors
         point mP1 = _p1;
         point mP2 = _p2;
@@ -36,7 +36,7 @@ public:
         mC3.out(mData);
     }
     ~VTriangle() {
-        std::cout << "Is desctructing Triangle" << std::endl;
+        // std::cout << "Is desctructing Triangle" << std::endl;
     }
 };
 

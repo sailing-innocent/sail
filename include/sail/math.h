@@ -20,6 +20,7 @@ SAIL_NAMESPACE_BEGIN
 SAIL_NAMESPACE_END
 
 #include <sail/math/arithmetic.h>
-
+#include <sail/math/geometry.h>
+#include <sail/math/statistic.h>
 
 #endif // SAIL_MATH_H

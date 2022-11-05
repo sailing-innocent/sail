@@ -45,7 +45,7 @@ public:
     Histogram2D(std::vector<float>& _listofdata, float _max, float _min) {
         mCount = _listofdata.size();
         for (auto data: _listofdata) {
-            heights.push_back((data-_min)/(_max-_min));
+            heights.push_back(clamp<float>((data-_min)/(_max-_min),0.01f,0.99f) );
         }
     }
     ~Histogram2D() {}

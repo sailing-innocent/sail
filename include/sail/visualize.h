@@ -10,18 +10,17 @@
 */
 
 #include <sail/common.h>
-#include <sail/math.h>
+#include <sail/math/arithmetic.h>
 
 SAIL_NAMESPACE_BEGIN
 
 class VisNode: public Base {
 public:
     VisNode() {
-        std::cout << "Constructing VisNode" << std::endl;
-
+        // std::cout << "Constructing VisNode" << std::endl;
     };
     VisNode(const VisNode& node) {
-        std::cout << "Constructing VisNode with " << node.subNodeCount() << " subnodes" << std::endl;
+        // std::cout << "Constructing VisNode with " << node.subNodeCount() << " subnodes" << std::endl;
         mSubNodeCount = node.subNodeCount();
         std::vector<float> _data = node.data();
         for (auto i = 0; i < _data.size(); i++) {
@@ -32,7 +31,7 @@ public:
         }
     }
     virtual ~VisNode() {
-        std::cout << "Destructing VisNode with "<< mSubNodeCount << " subnodes." << std::endl;
+        // std::cout << "Destructing VisNode with "<< mSubNodeCount << " subnodes." << std::endl;
         for (auto i = 0; i < mSubNodeCount; i++) {
             // delete mSubNodes[i];
         }
@@ -43,7 +42,7 @@ public:
     virtual void genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, uint16_t start = 0);
     const size_t subNodeCount() const { return mSubNodeCount; }
     virtual bool append(VisNode& node) {
-        std::cout << "is appending node with " << node.subNodeCount() << " subnodes" << std::endl;
+        // std::cout << "is appending node with " << node.subNodeCount() << " subnodes" << std::endl;
         mSubNodes.push_back(node);
         mSubNodeCount++;
         return true;

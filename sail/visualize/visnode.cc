@@ -5,7 +5,7 @@ SAIL_NAMESPACE_BEGIN
 void VisNode::genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, uint16_t start)
 {
     uint16_t shift = static_cast<uint16_t>(mData.size() / 8);
-    std::cout << "is generating node ING with " << shift << " items. " << std::endl;
+    // std::cout << "is generating node ING with " << shift << " items. " << std::endl;
     for (auto i = 0; i < mData.size(); i++) {
         fVertices.push_back(mData[i]);
     }
@@ -29,7 +29,7 @@ void VisNode::genING(std::vector<float>& fVertices, std::vector<uint16_t>& uIndi
         shift += static_cast<uint16_t>(vf.size() / 8);
 
     }
-    std::cout << "Current verts: " << fVertices.size() << std::endl;
+    // std::cout << "Current verts: " << fVertices.size() << std::endl;
 
     VisRefine(fVertices, uIndices, start);
 }
@@ -49,7 +49,7 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, u
     const size_t stride = 8;
     const size_t shift = 3;
     const size_t nItems = fVertices.size() / stride;
-    std::cout << "IS REFINING MESH with: " << nItems << " Vertices" << std::endl;
+    // std::cout << "IS REFINING MESH with: " << nItems << " Vertices" << std::endl;
     size_t validItems = nItems;
     for (auto i = 0; i < validItems-1; i++) {
         size_t j = i+1;
@@ -62,7 +62,7 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, u
                 }
             }
     
-            std::cout << "::IS COMPARING " << i << " and " << j << " with result: "<< flag <<std::endl;
+            // std::cout << "::IS COMPARING " << i << " and " << j << " with result: "<< flag <<std::endl;
         
             if (flag) {
                 indexCover(uIndices, start+i, start+j);
@@ -79,7 +79,7 @@ void VisRefine(std::vector<float>& fVertices, std::vector<uint16_t>& uIndices, u
                 j--;
             }
             j++;
-            std::cout << "CURRENT VALIDATE ITEMS: " << validItems << std::endl;
+            // std::cout << "CURRENT VALIDATE ITEMS: " << validItems << std::endl;
         }
     }
 
