@@ -21,6 +21,7 @@ list(APPEND LIBSAIL_SRC
     "sail/visualize/visnode.cc"
     "sail/math/geometry_primitive.cc"
     "sail/ui/figure.cc"
+    "sail/math/distribution.cc"
 )
 
 list(APPEND LIBSAIL_INCLUDE

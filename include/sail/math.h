@@ -12,12 +12,6 @@
 #define SAIL_MATH_H_
 
 #include <sail/common.h>
-#include <vector>
-#include <array>
-#include <iostream>
-#include <Eigen/Core>
-#include <Eigen/Dense>
-#include <math.h>
 
 SAIL_NAMESPACE_BEGIN
 

@@ -89,5 +89,6 @@ protected:
 
 SAIL_NAMESPACE_END
 
+#include <sail/math/statistic/distribution.hpp>
 
 #endif // SAIL_MATH_STATISTIC_H_
