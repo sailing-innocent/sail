@@ -88,7 +88,7 @@ class Rect2D: public Primitive {
 public:
     Rect2D() = default;
     Rect2D(
-        point& lb = point(), 
+        point lb = point(), 
         float width = 0.2f,
         float height=0.1f
     ) {

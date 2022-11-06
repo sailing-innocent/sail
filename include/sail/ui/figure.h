@@ -17,7 +17,7 @@ SAIL_NAMESPACE_BEGIN
 class Figure: public Base {
 public:
     Figure(
-        point& _lb = point(), 
+        point _lb = point(), 
         float _width = 0.9f,
         float _height= 0.9f
     ):
