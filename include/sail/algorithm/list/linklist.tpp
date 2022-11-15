@@ -1,9 +1,9 @@
 #ifndef SAIL_ALGORITHM_LINKLIST_TPP_
 #define SAIL_ALGORITHM_LINKLIST_TPP_
 
-#ifndef SAIL_ALGORITHM_LIST_H_
-#error __FILE__ should only be included from list.hpp 
-#endif
+#include <sail/common.h>
+
+SAIL_NAMESPACE_BEGIN
 
 template<typename T>
 bool LinkList<T>::setContent(std::vector<ListNode<T>>& vec) {
@@ -97,5 +97,7 @@ bool LinkList<T>::swap(size_t i, size_t j)
     mContent[j].setContent(datai);
     return true;
 }
+
+SAIL_NAMESPACE_END
 
 #endif // SAIL_ALGORITHM_LINKLIST_TPP_

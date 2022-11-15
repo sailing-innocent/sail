@@ -6,12 +6,12 @@ set(CMAKE_C_STANDARD_REQUIRED TRUE)
 
 set(TEST_ENABLED TRUE)
 set(BASIC_TEST_ENABLED FALSE)
-set(VIS_TEST_ENABLED TRUE)
-set(MATH_TEST_ENABLED TRUE)
+set(VIS_TEST_ENABLED FALSE)
+set(MATH_TEST_ENABLED FALSE)
 set(DEPS_TEST_ENABLED FALSE)
-set(ALGORITHM_TEST_ENABLED FALSE)
-set(LC_TEST_ENABLED FALSE)
-set(UI_TEST_ENABLED TRUE)
+set(ALGORITHM_TEST_ENABLED TRUE)
+set(LC_TEST_ENABLED TRUE)
+set(UI_TEST_ENABLED FALSE)
 set(BINDING_ENABLED FALSE)
 # ALGORITHM
 aux_source_directory("sail/algorithm" ALGORITHM_SRC)
@@ -154,7 +154,8 @@ if (TEST_ENABLED)
     
     if (${LC_TEST_ENABLED})
         list(APPEND LC_TEST_SOURCE
-            "utest/leetcode/lc01.cc"
+            # "utest/leetcode/lc001.cc"
+            "utest/leetcode/lc016.cc"
         )
         add_executable(lc_test ${LC_TEST_SOURCE})
         target_include_directories(lc_test PUBLIC ${LIBSAIL_TEST_INCLUDE})

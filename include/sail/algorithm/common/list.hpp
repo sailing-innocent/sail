@@ -1,8 +1,8 @@
 #pragma once
 /**
  * FILE:include/sail/algorith/list.hpp
- * AUTHOR:sailing-innocent
- * CREATE:2022-10-15
+ * AUTHOR: sailing-innocent
+ * CREATE: 2022-10-15
  * DESP: the template linked list library for SAIL
  * DONE: //TODO: Finish SALI linked list library
 */
@@ -39,6 +39,7 @@ public:
         setContent(vec);
     }
     inline size_t size() { return mSize; }
+    bool isEmpty() const { return mSize == 0; }
     bool setContent(std::vector<ListNode<T>>& vec);
     bool append(T val);
     ListNode<T>& operator[](size_t index){ return mContent[index]; }
@@ -59,9 +60,9 @@ protected:
     size_t mSize = 0;
 };
 
+SAIL_NAMESPACE_END
+
 // ---------------------IMPLEMENTATIONS-------------------------//
 #include <sail/algorithm/list/linklist.tpp>
-
-SAIL_NAMESPACE_END
 
 #endif // SAIL_ALGORITHM_LIST_H_

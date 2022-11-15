@@ -22,6 +22,7 @@ TEST(SAIL_TEST_LIST, CREATE_LIST)
     vec.push_back(ln1);
     vec.push_back(ln2);
     LinkList<int> l(vec);
+    EXPECT_EQ(l.isEmpty(), false);
     EXPECT_EQ(l.content()[0].content(), 1);
     EXPECT_EQ(l.content()[1].content(), 2);
     EXPECT_EQ(l.content()[0].next().content(), 2);

@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "D:/repos/sail/include",
-                "E:/includes"
+                "E:/includes",
+                "E:/libs/eigen"
             ],
             "defines": [
                 "_DEBUG",
