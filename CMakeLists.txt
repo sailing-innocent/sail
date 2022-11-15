@@ -131,6 +131,7 @@ if (TEST_ENABLED)
             # "utest/algorithm/node.test.cc"
             # "utest/algorithm/list.test.cc"
             "utest/algorithm/stack.test.cc"
+            "utest/algorithm/queue.test.cc"
             # "utest/algorithm/sort.test.cc"
             # "utest/algorithm/select.test.cc"
         )

@@ -28,7 +28,7 @@ public:
     }
     bool push(T& nt) {
         Node<T> n(nt);
-        push(n);
+        return push(n);
     }
     Node<T> pop() { 
         Node<T> n = mContent[mSize-1];
