@@ -28,6 +28,7 @@ SAIL_NAMESPACE_END
 #include <sail/algorithm/common/list.hpp>
 #include <sail/algorithm/common/stack.hpp>
 #include <sail/algorithm/common/queue.hpp>
+#include <sail/algorithm/common/tree.hpp>
 #include <sail/algorithm/sort.hpp>
 // #include <sail/algorithm/common/array.hpp>
 

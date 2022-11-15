@@ -130,8 +130,9 @@ if (TEST_ENABLED)
         list(APPEND ALGORITHM_TEST_SOURCE
             # "utest/algorithm/node.test.cc"
             # "utest/algorithm/list.test.cc"
-            "utest/algorithm/stack.test.cc"
-            "utest/algorithm/queue.test.cc"
+            # "utest/algorithm/stack.test.cc"
+            # "utest/algorithm/queue.test.cc"
+            "utest/algorithm/tree.test.cc"
             # "utest/algorithm/sort.test.cc"
             # "utest/algorithm/select.test.cc"
         )
