@@ -1,6 +1,6 @@
 set(BASIC_TEST_ENABLED FALSE)
 set(VIS_TEST_ENABLED FALSE)
-set(MATH_TEST_ENABLED FALSE)
+set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED TRUE)
 set(LC_TEST_ENABLED FALSE)
@@ -142,6 +142,7 @@ if (${CUDA_TEST_ENALBED} AND ${CUDA_ENABLED})
     )
     list(APPEND CUDA_TEST_SOURCE
         "cuda/hello.test.cc"
+        "cuda/vector.test.cc"
     )
     list(APPEND LIBSAIL_TEST_LIBDIRS
         # "D:/repos/sail/build/sailcu/Debug"

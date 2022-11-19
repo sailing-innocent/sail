@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <sailcu/common.h>
-#define N 10
+#define N 10000
 
 SAIL_NAMESPACE_BEGIN
 
