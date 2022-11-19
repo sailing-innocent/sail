@@ -1,4 +1,4 @@
-#include "sail/hello.h"
+#include "sail/common.h"
 
 SAIL_NAMESPACE_BEGIN
 
