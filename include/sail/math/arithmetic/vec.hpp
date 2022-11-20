@@ -65,13 +65,14 @@ public:
     virtual Vector<DType_, Size_> operator-(const Vector<DType_,Size_>& rhs) {
         return Vector(mData - rhs.data());
     }
-    virtual DType_ norm() { return sqrt(*this * (*this)); }
-    virtual Vector<DType_,Size_>& normalize() {
+    virtual float norm() { return sqrt(*this * (*this)); }
+    virtual Vector<float, Size_> normalize() {
         float k = 1/this->norm();
-        for (auto d: mData) {
-            d*=k;
+        Vector<float, Size_> res;
+        for (auto i = 0; i < Size_; i++ ) {
+            res[i] = k * mData[i];
         }
-        return *this;
+        return res;
     }
     // OUTPUT METHOD
     virtual void out(std::vector<DType_>& outv) const {

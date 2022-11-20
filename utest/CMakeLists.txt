@@ -2,10 +2,10 @@ set(BASIC_TEST_ENABLED FALSE)
 set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
-set(ALGORITHM_TEST_ENABLED TRUE)
+set(ALGORITHM_TEST_ENABLED FALSE)
 set(LC_TEST_ENABLED FALSE)
 set(UI_TEST_ENABLED FALSE)
-set(CUDA_TEST_ENALBED TRUE)
+set(CUDA_TEST_ENALBED FALSE)
 
 # include(FetchContent)
 # FetchContent_Declare(
@@ -80,7 +80,8 @@ endif()
 
 if (${MATH_TEST_ENABLED})
     list(APPEND MATH_TEST_SOURCE
-        "math/vec4f.test.cc"
+        # "math/vec4f.test.cc"
+        "math/vec2i.test.cc"
         # "visualize/vnode.test.cc"
         # "math/geometry.test.cc"
         # "math/matrix.test.cc"
