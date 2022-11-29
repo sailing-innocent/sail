@@ -3,7 +3,7 @@ set(VIS_TEST_ENABLED FALSE)
 set(MATH_TEST_ENABLED TRUE)
 set(DEPS_TEST_ENABLED FALSE)
 set(ALGORITHM_TEST_ENABLED FALSE)
-set(LC_TEST_ENABLED FALSE)
+set(LC_TEST_ENABLED TRUE)
 set(UI_TEST_ENABLED FALSE)
 set(CUDA_TEST_ENALBED TRUE)
 
@@ -126,7 +126,8 @@ if (${LC_TEST_ENABLED})
     list(APPEND LC_TEST_SOURCE
         # "utest/leetcode/lc001.cc"
         # "utest/leetcode/lc016.cc"
-        "leetcode/lc021.cc"
+        # "leetcode/lc021.cc"
+        "leetcode/lc022.cc"
     )
     add_executable(lc_test ${LC_TEST_SOURCE})
     target_include_directories(lc_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
