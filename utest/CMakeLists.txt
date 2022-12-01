@@ -124,10 +124,11 @@ endif()
 
 if (${LC_TEST_ENABLED})
     list(APPEND LC_TEST_SOURCE
-        # "utest/leetcode/lc001.cc"
-        # "utest/leetcode/lc016.cc"
+        # "leetcode/lc001.cc"
+        # "leetcode/lc016.cc"
         # "leetcode/lc021.cc"
-        "leetcode/lc022.cc"
+        # "leetcode/lc022.cc"
+        "leetcode/lc041.cc"
     )
     add_executable(lc_test ${LC_TEST_SOURCE})
     target_include_directories(lc_test PUBLIC ${LIBSAIL_TEST_INCLUDE})
