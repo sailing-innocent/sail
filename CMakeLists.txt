@@ -34,7 +34,7 @@ set(CMAKE_CUDA_ARCHITECTURES 86)
 
 set(TEST_ENABLED TRUE)
 set(BINDING_ENABLED FALSE)
-set(CUDA_ENABLED TRUE)
+set(CUDA_ENABLED FALSE)
 
 ####################### TARGET ###############################################
 
@@ -45,8 +45,8 @@ source_group(TREE "${CMAKE_CURRENT_SOURCE_DIR}" FILES ${LIBSAIL_SOURCE})
 
 list(APPEND LIBSAIL_INCLUDE
     "D:/repos/sail/include"
-    "E:/includes"
-    "E:/libs/eigen/"
+    "D:/includes"
+    "D:/source/eigen/"
 )
 
 list(APPEND LIBSAIL_DEP_LIBS
