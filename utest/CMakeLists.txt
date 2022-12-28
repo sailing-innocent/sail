@@ -7,8 +7,6 @@ set(LC_TEST_ENABLED TRUE)
 set(UI_TEST_ENABLED FALSE)
 set(CUDA_TEST_ENALBED TRUE)
 
-
-
 list(APPEND LIBSAIL_TEST_INCLUDE
     ${LIBSAIL_INCLUDE}
 )
@@ -119,8 +117,10 @@ if (${LC_TEST_ENABLED})
         # "leetcode/lc016.cc"
         # "leetcode/lc021.cc"
         # "leetcode/lc022.cc"
+        "leetcode/lc032.cc"
         # "leetcode/lc041.cc"
-        "leetcode/lc042.cc"
+        # "leetcode/lc042.cc"
+
     )
     add_executable(lc_test ${LC_TEST_SOURCE})
     target_include_directories(lc_test PUBLIC ${LIBSAIL_TEST_INCLUDE})

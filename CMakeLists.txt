@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.24)
 project(libsail
     VERSION 0.2
     DESCRIPTION "The Sail Tool Library"
@@ -34,7 +34,7 @@ set(CMAKE_CUDA_ARCHITECTURES 86)
 
 set(TEST_ENABLED TRUE)
 set(BINDING_ENABLED FALSE)
-set(CUDA_ENABLED FALSE)
+set(CUDA_ENABLED TRUE)
 
 ####################### TARGET ###############################################
 
